@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testdeploy
+  labels:
+    app: testdeploy
+spec:
+ template:
+   metadata:
+    labels:
+     app: testdeploy
+   spec:
+     containers:
+       - image: asid55/twitter-app:latest
+         name: testdeploy
+         ports:
+           - containerPort: 8080
+ selector:
+     matchLabels:
+       app: testdeploy
+ replicas: 2
